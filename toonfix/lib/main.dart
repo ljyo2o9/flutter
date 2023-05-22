@@ -11,147 +11,40 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(
-        title: "My Home Page",
-        count: 0,
-      ),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  HomePage({Key? key, required this.title, required this.count})
-      : super(key: key);
-
-  final String title;
-  int count;
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  void _click() {
-    setState(() {
-      widget.count++;
-    });
-  }
-
-  void _reset() {
-    setState(() {
-      widget.count = 0;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-        ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Text(
-              widget.count.toString(),
-              style: TextStyle(fontSize: 50),
-            ),
-          ),
-          MaterialButton(
-            onPressed: () {
-              _click();
-            },
-            child: Text(
-              'Up',
-              style: TextStyle(fontSize: 20),
-            ),
-            color: Colors.red,
-          ),
-          MaterialButton(
-            onPressed: () {
-              _reset();
-            },
-            child: Text('Reset', style: TextStyle(fontSize: 20)),
-            color: Colors.blue,
-          ),
-          MaterialButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewPage(),
-                ),
-              );
-            },
-            child: Text('New page'),
-            color: Colors.green,
-          ),
-          MaterialButton(
-            onPressed: () {
-              Navigator.replace(context,
-                  oldRoute: MaterialPageRoute(
-                    builder: (context) =>
-                        HomePage(title: 'My Home Page', count: 0),
-                  ),
-                  newRoute: MaterialPageRoute(
-                    builder: (context) => NewNewPage(),
-                  ));
-            },
-            child: Text('NewNewPage'),
-            color: Colors.grey,
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class NewPage extends StatelessWidget {
-  const NewPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('New Page'),
-        ),
-        body: MaterialButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => NewNewPage(),
+      home: Scaffold(
+        backgroundColor: Color(0xFF181818),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 45,
               ),
-            );
-          },
-          child: Text('NewNewPage'),
-        ));
-  }
-}
-
-class NewNewPage extends StatelessWidget {
-  const NewNewPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Trd Page'),
-      ),
-      body: MaterialButton(
-        onPressed: () {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomePage(title: "My Home Page", count: 0),
-            ),
-            (route) => false,
-          );
-        },
-        child: Text('HomePage'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Hey, Selena',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        'Welcome back',
+                        style: TextStyle(
+                            color: Colors.white.withOpacity(0.8), fontSize: 18),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
