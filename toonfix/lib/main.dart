@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toonfix/widgets/button.dart';
+import 'package:toonfix/widgets/card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 100,
+                height: 50,
               ),
               Text(
                 'Total Balance',
@@ -82,7 +83,7 @@ class MyApp extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 80,
+                height: 60,
               ),
               Row(
                 children: [
@@ -107,72 +108,44 @@ class MyApp extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
-              Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: const BoxDecoration(
-                  color: Color(0xFF1F2123),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(25),
+              const Stack(
+                children: [
+                  MakeCard(
+                    cardColor: Color(0xFF1F2123),
+                    money: 'Euro',
+                    moneyColor: Colors.white,
+                    moneyIcon: Icons.euro_rounded,
+                    moneyInt: '6 428',
+                    moneyunit: 'EUR',
+                    iconColor: Colors.white,
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Euro',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 32,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                '6 428',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'EUR',
-                                style: TextStyle(
-                                  color: Colors.white.withOpacity(0.8),
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                      Transform.scale(
-                        scale: 2.2,
-                        child: Transform.translate(
-                          offset: Offset(-5, 12),
-                          child: Icon(
-                            Icons.euro_rounded,
-                            color: Colors.white,
-                            size: 88,
-                          ),
-                        ),
-                      )
-                    ],
+                  Padding(
+                    padding: EdgeInsets.only(top: 100),
+                    child: MakeCard(
+                      cardColor: Colors.white,
+                      money: 'Dollar',
+                      moneyColor: Colors.black,
+                      moneyIcon: Icons.monetization_on_outlined,
+                      moneyInt: '55 622',
+                      moneyunit: 'USD',
+                      iconColor: Colors.black,
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 200),
+                    child: MakeCard(
+                      cardColor: Color(0xFF1F2123),
+                      money: 'Bitcoin',
+                      moneyColor: Colors.white,
+                      moneyIcon: Icons.currency_bitcoin,
+                      moneyInt: '9 785',
+                      moneyunit: 'BTC',
+                      iconColor: Colors.white,
+                    ),
+                  )
+                ],
               )
             ],
           ),
